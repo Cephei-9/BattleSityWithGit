@@ -590,3 +590,124 @@ System memory in use after: 85.6 MB.
 Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 2345.
 Total: 4.126500 ms (FindLiveObjects: 0.454800 ms CreateObjectMapping: 0.138000 ms MarkObjects: 3.302100 ms  DeleteObjects: 0.229400 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002607 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.24 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.885 seconds
+Platform modules already initialized, skipping
+Script error: OnCollisionStay
+The message must have 0 or 1 parameters.
+The message will be ignored.
+
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1814 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.7 MB.
+System memory in use after: 85.7 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2350.
+Total: 3.827300 ms (FindLiveObjects: 0.359500 ms CreateObjectMapping: 0.083500 ms MarkObjects: 3.166100 ms  DeleteObjects: 0.216400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001897 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.974 seconds
+Platform modules already initialized, skipping
+Script error: OnCollisionStay
+The message must have 0 or 1 parameters.
+The message will be ignored.
+
+Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1813 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.7 MB.
+System memory in use after: 85.6 MB.
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 2353.
+Total: 4.569800 ms (FindLiveObjects: 0.346000 ms CreateObjectMapping: 0.091800 ms MarkObjects: 3.903800 ms  DeleteObjects: 0.225700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2188.679678 seconds.
+  path: Assets/Scripts/SpawnSystem.cs
+  artifactKey: Guid(39ed8863c37038246892522057edfd61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SpawnSystem.cs using Guid(39ed8863c37038246892522057edfd61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b06b2f9c0863eaa4534e21878049a32') in 0.033709 seconds
+  Import took 0.048505 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002142 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.53 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.847 seconds
+Platform modules already initialized, skipping
+Script error: OnCollisionStay
+The message must have 0 or 1 parameters.
+The message will be ignored.
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1814 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.7 MB.
+System memory in use after: 85.7 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2358.
+Total: 4.944800 ms (FindLiveObjects: 0.575300 ms CreateObjectMapping: 0.147300 ms MarkObjects: 3.990600 ms  DeleteObjects: 0.229000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001763 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.664 seconds
+Platform modules already initialized, skipping
+Script error: OnCollisionStay
+The message must have 0 or 1 parameters.
+The message will be ignored.
+
+Refreshing native plugins compatible for Editor in 3.15 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1814 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.7 MB.
+System memory in use after: 85.7 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2362.
+Total: 4.103600 ms (FindLiveObjects: 0.462200 ms CreateObjectMapping: 0.158900 ms MarkObjects: 3.263700 ms  DeleteObjects: 0.215800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 865.495551 seconds.
+  path: Assets/Scripts/SpawnSystem.cs
+  artifactKey: Guid(39ed8863c37038246892522057edfd61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SpawnSystem.cs using Guid(39ed8863c37038246892522057edfd61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ef12129a8bfc2cc6da0d48203ac17e4') in 0.009506 seconds
+  Import took 0.016056 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.973511 seconds.
+  path: Assets/Scripts/SpawnSystem.cs
+  artifactKey: Guid(39ed8863c37038246892522057edfd61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SpawnSystem.cs using Guid(39ed8863c37038246892522057edfd61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ef12129a8bfc2cc6da0d48203ac17e4') in 0.003887 seconds
+  Import took 0.010686 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
