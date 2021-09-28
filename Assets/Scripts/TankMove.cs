@@ -6,10 +6,12 @@ public class TankMove : MonoBehaviour
 {
     [SerializeField] private float _speed = 1;
     [SerializeField] private Rigidbody2D _selfRb;
+    [SerializeField] private DistanceChecker distanceCheck;
 
     public Vector3 NowDirection { get; private set; }
     public Vector3 LastDirection { get; private set; }
     public bool IsMove { get; private set; }
+    public bool IsCollision { get; private set; }
 
     public void SetDirection(Vector2 diretion)
     {
@@ -22,8 +24,15 @@ public class TankMove : MonoBehaviour
 
     private void Update()
     {
-        if (IsMove)
-            transform.position += NowDirection * _speed * Time.deltaTime;
+        if (IsMove) 
+        {
+            float velosityOnThisFrame = _speed * Time.deltaTime;
+            float distanceToNerhestObj = distanceCheck.CheckDistance() - 1;
+            float min = Mathf.Min(velosityOnThisFrame, distanceToNerhestObj);
+            if (distanceToNerhestObj < velosityOnThisFrame) IsCollision = true;
+            if (min < 0) return;
+            transform.position += min * NowDirection;
+        }
     }
 
     public void Stop()
