@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _startHealth = 1;
+    [SerializeField] private bool _destroyOnDie = true;
     [Space]
     [SerializeField] private Fraction _selfFraction;
     [SerializeField] private GameObject _objToDestroy;
@@ -38,7 +39,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Destroy(_objToDestroy);
+        if(_destroyOnDie) Destroy(_objToDestroy);
         DieEvent.Invoke(GetComponentInParent<EnemyAI>());
     }
 }

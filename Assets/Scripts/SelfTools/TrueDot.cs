@@ -13,4 +13,28 @@ public static class TrueDot
         }
         return Mathf.InverseLerp(90, 0, angle);
     }
+
+    public static Vector2 NormalizeAngleForVector(Vector2 vector)
+    {
+        float DotFromRight = Dot(vector, Vector2.right);
+        float DotFromUp = Dot(vector, Vector2.up);
+
+        Vector2 direction = Vector2.up * Mathf.Sign(DotFromUp);
+        if (Mathf.Abs(DotFromRight) > Mathf.Abs(DotFromUp))
+        {
+            direction = Vector2.right * Mathf.Sign(DotFromRight);
+        }
+        return direction;
+    }
+
+    public static Vector2 GetRandomNormolizeDirection()
+    {
+        float randomSign = Mathf.Sign(Random.Range(-1, 1));
+        float randomX = Random.value;
+        float randomY = Random.value;
+
+        Vector2 direction = Vector2.right;
+        if (randomY > randomX) direction = Vector3.up;
+        return direction * randomSign;
+    }
 }

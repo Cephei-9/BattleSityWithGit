@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee166de271ac864892c1edecead36ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  Speed: 5
   _selfRb: {fileID: 0}
   distanceCheck: {fileID: 9117067824396984374}
 --- !u!114 &4257729311283353723
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 12
+  _shootPeriod: 0.7
   _bullet: {fileID: 5767575504908740865, guid: 48a78c3f369fd914e8cab66665ec6902, type: 3}
   _shootPoint: {fileID: 8825095469847860256}
   _selfCollider: {fileID: 761605238}

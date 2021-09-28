@@ -4,25 +4,91 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] private AIMode[] _aIModes;
+    [SerializeField] private float[] _chanceOfReciving;
+    [SerializeField] private AIMode _startModes;
+
+    public Color[] Colors;
+    public SpriteRenderer SpriteRenderer;
+
+    private AIMode _activeMode;
+
+    private void Start()
+    {
+        foreach (var item in _aIModes)
+        {
+            item.Deactivate();
+        }
+        _startModes.Activate();
+        _activeMode = _startModes;
+        StartCoroutine(StaticCoroutine.Wait(_activeMode.TimeWork, ChangeMode));
+    }
+
+    private void ChangeMode()
+    {
+        AIMode newMode = GetRandomMode();
+        _activeMode.Deactivate();
+        newMode.Activate();
+        _activeMode = newMode;
+        StartCoroutine(StaticCoroutine.Wait(_activeMode.TimeWork, ChangeMode));
+
+        for (int i = 0; i < _aIModes.Length; i++)
+        {
+            if (_aIModes[i] == _activeMode) SpriteRenderer.color = Colors[i];
+        }
+    }
+
+    public void ChangeOutOfTurn()
+    {
+        StopAllCoroutines();
+        ChangeMode();
+    }
+
+    private AIMode GetRandomMode()
+    {
+        Dictionary<AIMode, float> AiModChance = new Dictionary<AIMode, float>();
+        for (int i = 0; i < _aIModes.Length; i++)
+        {
+            if (_aIModes[i] == _activeMode) continue;
+            AiModChance.Add(_aIModes[i], Random.value * _chanceOfReciving[i]);
+        }
+        AIMode mode = null;
+        float maxChance = 0;
+        foreach (var keyValue in AiModChance)
+        {
+            if (keyValue.Value > maxChance)
+            {
+                maxChance = keyValue.Value;
+                mode = keyValue.Key;
+            }
+        }
+        return mode;
+    }
+}
+
+[System.Serializable]
+public class DirectionPriority
+{
+    public Vector2 Direction;
+    public float priority;
+}
+
+public abstract class AIMode : MonoBehaviour
+{
+    public float TimeWork = 10;
     [Header("Time to change direction")]
-    [SerializeField] private float _minTime = 1;
-    [SerializeField] private float _maxTime = 2;
+    [SerializeField] protected float _minTime = 1;
+    [SerializeField] protected float _maxTime = 2;
+    [SerializeField] protected float _timeToTurnAfterCollision = 2;
     [Space]
-    [SerializeField] private float _shootPeriod = 2;
+    [SerializeField] protected float _shootPeriod = 2;
     [Space]
-    [SerializeField] private TankMove _tankMove;
-    [SerializeField] private TankGun _tankGun;
+    [SerializeField] protected TankMove _tankMove;
+    [SerializeField] protected TankGun _tankGun;
 
     private float _timerForDirection;
     private float _timerForShoot;
     private float _timeToNextChangeDirection;
-
-    private bool _isCollision;
-
-    private void Start()
-    {
-        SetRandomDirectionToTank();
-    }
 
     private void Update()
     {
@@ -34,7 +100,7 @@ public class EnemyAI : MonoBehaviour
         if (_timerForDirection > _timeToNextChangeDirection)
         {
             _timerForDirection = 0;
-            SetRandomDirectionToTank();
+            SetDirectionToTank();
         }
 
         if (_timerForShoot > _shootPeriod)
@@ -44,44 +110,30 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void AcceptCollision()
+    public virtual void Activate()
+    {
+        enabled = true;
+        SetDirectionToTank();
+        UpdateTime();
+    }
+
+    public virtual void Deactivate()
+    {
+        enabled = false;
+    }
+
+    protected abstract void SetDirectionToTank();
+
+    public virtual void AcceptCollision()
     {
         if (_tankMove.IsCollision)
         {
-            _timeToNextChangeDirection = _minTime;
+            _timeToNextChangeDirection = _timeToTurnAfterCollision;
         }
-
-        //if (_isCollision == false)
-        //{
-        //    _timeToNextChangeDirection = _minTime;
-        //    _isCollision = true; 
-        //}
     }
 
-    private void SetRandomDirectionToTank()
-    {
-        float randomSign = Mathf.Sign(Random.Range(-1, 1));
-        float randomX = Random.value;
-        float randomY = Random.value;
-
-        Vector2 direction = Vector2.right;
-        if (randomY > randomX) direction = Vector3.up;
-        direction *= randomSign;
-        _tankMove.SetDirection(direction);
-        UpdateTime();
-
-        _isCollision = false;
-    }
-
-    private void UpdateTime()
+    protected virtual void UpdateTime()
     {
         _timeToNextChangeDirection = Random.Range(_minTime, _maxTime);
     }
-}
-
-[System.Serializable]
-public class DirectionPriority 
-{
-    public Vector2 Direction;
-    public float priority;
 }
