@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        AcceptCollision();
+
         _timerForDirection += Time.deltaTime;
         _timerForShoot += Time.deltaTime;
 
@@ -44,11 +46,16 @@ public class EnemyAI : MonoBehaviour
 
     public void AcceptCollision()
     {
-        if (_isCollision == false)
+        if (_tankMove.IsCollision)
         {
             _timeToNextChangeDirection = _minTime;
-            _isCollision = true; 
         }
+
+        //if (_isCollision == false)
+        //{
+        //    _timeToNextChangeDirection = _minTime;
+        //    _isCollision = true; 
+        //}
     }
 
     private void SetRandomDirectionToTank()

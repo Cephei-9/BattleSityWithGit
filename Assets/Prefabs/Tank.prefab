@@ -206,9 +206,9 @@ GameObject:
   - component: {fileID: 761605238}
   - component: {fileID: 761605237}
   - component: {fileID: 4257729311283353723}
-  - component: {fileID: 8028641473711908025}
   - component: {fileID: 7669899204249421696}
   - component: {fileID: 5485893993757968951}
+  - component: {fileID: 9117067824396984374}
   m_Layer: 9
   m_Name: Tank
   m_TagString: Untagged
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _selfRb: {fileID: 0}
+  distanceCheck: {fileID: 9117067824396984374}
 --- !u!114 &4257729311283353723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,23 +290,7 @@ MonoBehaviour:
   _bullet: {fileID: 5767575504908740865, guid: 48a78c3f369fd914e8cab66665ec6902, type: 3}
   _shootPoint: {fileID: 8825095469847860256}
   _selfCollider: {fileID: 761605238}
---- !u!114 &8028641473711908025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7485868967115789518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a7f02e9117c84b4d9a60c27a29b8f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _offsetToRight: 0.8
-  _selfCollider: {fileID: 761605238}
-  OnCollision:
-    m_PersistentCalls:
-      m_Calls: []
+  _selfFraction: 0
 --- !u!114 &7669899204249421696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,8 +330,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe19633bb6c35a14ea7f8a05a5b59ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  _startHealth: 1
+  _selfFraction: 0
   _objToDestroy: {fileID: 0}
   DieEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9117067824396984374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485868967115789518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca9fe7c053bdeb418013706d3f79b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offsetToRight: 0.95
+  _selfCollider: {fileID: 761605238}
