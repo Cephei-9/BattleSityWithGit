@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class BulletTaker : MonoBehaviour
 {
-    public UnityEvent<Vector2> OnBulletColliionEvent;
+    public UnityEvent<BulletCollisionInfo> OnBulletColliionEvent;
 
-    public void TakeBullet(Vector2 bulletPosition)
+    public void TakeBullet(BulletCollisionInfo bulletInfo)
     {
-        OnBulletColliionEvent.Invoke(bulletPosition);
+        OnBulletColliionEvent.Invoke(bulletInfo);
     }
 }

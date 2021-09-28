@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
-    [SerializeField] private TankMove _tank;
     [SerializeField] private MoveButton[] Buttons;
+    [SerializeField] private KeyCode _shootButton;
+    [Space]
+    [SerializeField] private TankMove _tank;
+    [SerializeField] private TankGun _tankGun;
 
     public MoveButton nowButton;
 
@@ -15,10 +18,8 @@ public class PlayerControler : MonoBehaviour
     {
         ChekPressed();
         CheckPressNewButton();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print("Time: " + Time.time);
-        }
+
+        if (Input.GetKeyDown(_shootButton)) _tankGun.Shoot();
     }
 
     private void ChekPressed()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     //Dot работает через жопу надо написать свой правельный дот
-    [SerializeField] private Transform _transformOfCollider;
+    [SerializeField] private Transform _spritesTransform;
     [SerializeField] private GameObject _gameObjToDie;
 
     private bool _isInjury;
@@ -15,11 +15,11 @@ public class Wall : MonoBehaviour
         _gameObjToDie.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
     }
 
-    public void TakeBullet(Vector2 bulletPos)
+    public void TakeBullet(BulletCollisionInfo bulletInfo)
     {
         if (_isInjury) { Destroy(_gameObjToDie); return; }
 
-        Vector2 toBullet = bulletPos - (Vector2)transform.position;
+        Vector2 toBullet = bulletInfo.lastPosition - (Vector2)transform.position;
         CalculateDirection(toBullet);
     }
 
@@ -34,17 +34,17 @@ public class Wall : MonoBehaviour
             directionDamage = Vector2.right * Mathf.Sign(DotFromRight);
         }
 
-        ChangeCollider(directionDamage);
+        ChangeSprite(directionDamage);
     }
 
-    private void ChangeCollider(Vector2 damageDirection)
+    private void ChangeSprite(Vector2 damageDirection)
     {
-        _transformOfCollider.position += -(Vector3)damageDirection * 0.25f;
+        _spritesTransform.position += -(Vector3)damageDirection * 0.25f;
 
         Vector2 subtractioScale = new Vector2(0.5f, 0);
         if (damageDirection.x == 0) subtractioScale = new Vector2(0, 0.5f);
 
-        _transformOfCollider.localScale -= (Vector3)subtractioScale;
+        _spritesTransform.localScale -= (Vector3)subtractioScale;
         _isInjury = true;
     }
 }

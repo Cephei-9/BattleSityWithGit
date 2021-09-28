@@ -11,13 +11,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float _shootPeriod = 2;
     [Space]
     [SerializeField] private TankMove _tankMove;
-    [SerializeField] private Gun _tankGun;
+    [SerializeField] private TankGun _tankGun;
 
     private float _timerForDirection;
     private float _timerForShoot;
     private float _timeToNextChangeDirection;
 
-    private bool _canMove;
+    private bool _isCollision;
 
     private void Start()
     {
@@ -41,18 +41,13 @@ public class EnemyAI : MonoBehaviour
             _timerForShoot = 0;
         }
     }
-    
-    public void CheckContact(Collision2D collision2D, GameObject tankObj)
+
+    public void AcceptCollision()
     {
-        _timeToNextChangeDirection = _minTime;
-    }
-    
-    public void OnCollisionStay(Collision2D collision2D, GameObject tankObj)
-    {
-        _canMove = true;
-        if (collision2D.rigidbody && collision2D.rigidbody.GetComponent<TankMove>())
+        if (_isCollision == false)
         {
-            _canMove = false;
+            _timeToNextChangeDirection = _minTime;
+            _isCollision = true; 
         }
     }
 
@@ -67,6 +62,8 @@ public class EnemyAI : MonoBehaviour
         direction *= randomSign;
         _tankMove.SetDirection(direction);
         UpdateTime();
+
+        _isCollision = false;
     }
 
     private void UpdateTime()

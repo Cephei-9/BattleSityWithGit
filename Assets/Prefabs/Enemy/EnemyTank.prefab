@@ -44,57 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b17d5f77eddecc419596c27fba9d312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minTime: 1
+  _minTime: 0.2
   _maxTime: 7
   _shootPeriod: 1
   _tankMove: {fileID: 2710874086073873162}
   _tankGun: {fileID: 2200162205491234564}
---- !u!114 &2710874085525382594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791218363979598769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d3cd42078e64a4b8cdc30554033fd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selfGameObj: {fileID: 0}
-  OnCollisionEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2710874084848675488}
-        m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
-        m_MethodName: OnCollision
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2710874084848675488}
-        m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
-        m_MethodName: OnCollisionStay
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &2710874086797188991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +112,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: _selfFraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: _objToDestroy
+      value: 
+      objectReference: {fileID: 2710874084848675490}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: _selfFraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6095327338427779689, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -170,13 +136,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2710874084848675488}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AcceptCollision
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EnemyAI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028641473711908025, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
---- !u!1 &4791218363979598769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7485868967115789518, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
-  m_PrefabInstance: {fileID: 2710874086797188991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1538557370834747511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3514206668469673736, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
@@ -187,7 +176,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 761605237, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
   m_PrefabInstance: {fileID: 2710874086797188991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791218363979598769}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee166de271ac864892c1edecead36ac, type: 3}
@@ -198,7 +187,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
   m_PrefabInstance: {fileID: 2710874086797188991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791218363979598769}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6889b6d357539f4b97b1ce8b7c85d85, type: 3}

@@ -18,18 +18,21 @@ public class TankMove : MonoBehaviour
         NowDirection = diretion;
 
         transform.rotation = Quaternion.LookRotation(Vector3.forward, NowDirection);
-        _selfRb.velocity = NowDirection * _speed;
+    }
+
+    private void Update()
+    {
+        if (IsMove)
+            transform.position += NowDirection * _speed * Time.deltaTime;
     }
 
     public void Stop()
     {
         IsMove = false;
-        _selfRb.velocity = Vector2.zero;
     }
 
     private void Turn()
     {
-        print("Turn");
         float positionOnAxis = transform.position.x;
         if (NowDirection.x == 0) positionOnAxis = transform.position.y;
 
@@ -37,7 +40,6 @@ public class TankMove : MonoBehaviour
 
         Vector2 newPosition = new Vector2(positionOnAxis, transform.position.y);
         if (NowDirection.x == 0) newPosition = new Vector2(transform.position.x, positionOnAxis);
-        //transform.position = newPosition;
-        _selfRb.MovePosition(newPosition);
+        transform.position = newPosition;
     }
 }

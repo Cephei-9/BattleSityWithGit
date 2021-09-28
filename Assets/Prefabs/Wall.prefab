@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5329400091509021712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5691440711722050707}
+  - component: {fileID: 1641462961524664105}
+  m_Layer: 8
+  m_Name: ColliderForTank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5691440711722050707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329400091509021712}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6562862228507869291}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1641462961524664105
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329400091509021712}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6562862227495699562
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,12 +66,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6562862227495699561}
-  - component: {fileID: 6562862227495699560}
+  - component: {fileID: 2557456531881106888}
   - component: {fileID: 6562862227495699567}
   - component: {fileID: 3165272321516977545}
   - component: {fileID: 2099974845028194064}
-  m_Layer: 0
-  m_Name: Collider
+  m_Layer: 7
+  m_Name: ColliderForBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,9 +89,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6562862228507869291}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6562862227495699560
+--- !u!212 &2557456531881106888
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dc4e76a99b15f43acfb2422e5e0533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transformOfCollider: {fileID: 6562862227495699561}
+  _spritesTransform: {fileID: 6562862227495699561}
   _gameObjToDie: {fileID: 6562862228507869284}
 --- !u!114 &2099974845028194064
 MonoBehaviour:
@@ -179,6 +236,7 @@ Transform:
   m_LocalPosition: {x: -12, y: -11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5691440711722050707}
   - {fileID: 6562862227495699561}
   m_Father: {fileID: 0}
   m_RootOrder: 0
