@@ -9,11 +9,12 @@ public class BafTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print("Something in trigger");
         if (other.GetComponent<Player>())
         {
             print("Player on trigger");
-            OnTakingByPlayer.Invoke(other.gameObject);
             Destroy(gameObject);
+            OnTakingByPlayer.Invoke(other.gameObject);
         }
     }
 }

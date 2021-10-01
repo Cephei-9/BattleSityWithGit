@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class SpawnSystem : MonoBehaviour
 {
+    [SerializeField] private ChalengeSystem _chalengeSystem;
     [SerializeField] int _maxEnemyCount = 4;
     [SerializeField] float _spawnPeriod = 4;
 
@@ -17,7 +18,7 @@ public class SpawnSystem : MonoBehaviour
     public List<EnemyAI> Enemies { get; private set; } = new List<EnemyAI>();
 
     private Coroutine _spawnEnemy;
-    private int nextSpawn;
+    private int _nextSpawn;
 
     private void Start()
     {
@@ -32,13 +33,19 @@ public class SpawnSystem : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(_spawnPeriod);
+        print("NextPeriod: " + _chalengeSystem.NextSpawnPeriod + " Time: " + Time.time);
+        yield return new WaitForSeconds(_chalengeSystem.NextSpawnPeriod);
 
-        Vector3 position = _spawnPoint[nextSpawn].position;
-        nextSpawn++;
-        if (nextSpawn == _spawnPoint.Length) nextSpawn = 0;
+        Vector3 position = _spawnPoint[_nextSpawn].position;
+        _nextSpawn++;
+        if (_nextSpawn == _spawnPoint.Length) _nextSpawn = 0;
 
-        EnemyAI enemy = Instantiate(_enemy, position, Quaternion.identity);
+        //GetEnemy
+
+        EnemyAI enemy = Instantiate(_chalengeSystem.GetNextEnemy(), position, Quaternion.identity);
+
+        print("EnemyName: " + enemy.gameObject.name + " Time: " + Time.time);
+
         Enemies.Add(enemy);
         OnNewEnemyEvent.Invoke(enemy);
         enemy.GetComponentInChildren<Health>().DieEvent.AddListener(OnTankDeath);
@@ -49,8 +56,34 @@ public class SpawnSystem : MonoBehaviour
 
     private void StartSpawnEnemyCoroutine()
     {
-        if (CanSpawn && _spawnEnemy == null) _spawnEnemy = StartCoroutine(SpawnEnemy());
+        print("MaxCount: " + _chalengeSystem.MaxEnemyCount + " Time: " + Time.time);
+        if (_chalengeSystem.MaxEnemyCount > Enemies.Count && _spawnEnemy == null) 
+            _spawnEnemy = StartCoroutine(SpawnEnemy());
+    }
+
+    public void CleanEnemiesArrByNull()
+    {
+        foreach (var item in Enemies)
+        {
+            if(item == null)
+            {
+                Enemies.Remove(item);
+                CleanEnemiesArrByNull();
+                return;
+            }
+        }
+        CheckNull();
+    }
+
+    [ContextMenu("CheckNull")]
+    public void CheckNull()
+    {
+        foreach (var item in Enemies)
+        {
+            if (item == null) print("In arr, this Null");
+        }
     }
 
     // Если умирает враг то ждется полноценный спавн период
 }
+

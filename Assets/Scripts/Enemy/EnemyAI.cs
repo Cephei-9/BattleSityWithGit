@@ -24,6 +24,17 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(StaticCoroutine.Wait(_activeMode.TimeWork, ChangeMode));
     }
 
+    public void CrioTime(bool active)
+    {
+        if (active) 
+        {
+            ChangeMode();
+            return; 
+        }
+        StopAllCoroutines();
+        _activeMode.Deactivate();
+    }
+
     private void ChangeMode()
     {
         AIMode newMode = GetRandomMode();

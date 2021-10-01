@@ -9,7 +9,6 @@ public class RandomMoveMode : AIMode
         int i = 0;
         while (_tankMove.SetDirection(TrueDot.GetRandomNormolizeDirection()) == false) 
         {
-            print("Rand");
             i++;
             if (i > 10) break;
         } 

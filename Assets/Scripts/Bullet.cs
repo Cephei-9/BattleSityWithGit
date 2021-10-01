@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Collider2D _selfCollider;
 
     public Fraction SelfFraction { get; private set; }
+    public BulletType BulletType { get; private set; }
     public Collider2D SelfCollider { get => _selfCollider; }
 
     private Vector3 _direction;
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out BulletTaker bulletTaker))
         {
             BulletCollisionInfo bulletInfo = new BulletCollisionInfo(
-                transform.position, SelfFraction, collision);
+                transform.position, SelfFraction, BulletType, collision);
             bulletTaker.TakeBullet(bulletInfo);
         }
         Destroy(gameObject);
@@ -29,12 +30,13 @@ public class Bullet : MonoBehaviour
         //transform.position += _direction * _speed * Time.deltaTime;
     }
 
-    public void StartMove(Vector3 direction, float speed, Fraction fraction)
+    public void StartMove(Vector3 direction, float speed, Fraction fraction, BulletType bulletType)
     {
         _direction = direction;
         _speed = speed;
         _selfRb.velocity = direction * speed;
         SelfFraction = fraction;
+        BulletType = bulletType;
     }
 }
 
@@ -42,12 +44,14 @@ public class BulletCollisionInfo
 {
     public readonly Vector2 lastPosition;
     public readonly Fraction Fraction;
+    public readonly BulletType BulletType;
     public readonly Collision2D Collision2D;
 
-    public BulletCollisionInfo(Vector2 lastPosition, Fraction fraction, Collision2D collision2D)
+    public BulletCollisionInfo(Vector2 lastPosition, Fraction fraction, BulletType bulletType, Collision2D collision2D)
     {
         this.lastPosition = lastPosition;
         Fraction = fraction;
         Collision2D = collision2D;
+        BulletType = bulletType;
     }
 }

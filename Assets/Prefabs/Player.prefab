@@ -73,9 +73,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342cab56cf184a84f92d9a96adfd871c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waitTime: 5
   _spawn: {fileID: 1105736326974093566}
   _health: {fileID: 759683873829040412}
   _beginImmortality: {fileID: 4033207828709581685}
+  PlayerOnField: 1
 --- !u!114 &4033207828709581685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8534259344487293987}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4084125118073144519
 MonoBehaviour:
@@ -148,27 +150,23 @@ MonoBehaviour:
   - TankSpeed: 5
     ShootSpeed: 12
     ShootPeriod: 0.4
-    Bullet: {fileID: 0}
-    UseStandartBullet: 1
-    Color: {r: 1, g: 0, b: 0.99214363, a: 1}
+    BulletType: 0
+    Sprite: {fileID: -5800861129757255216, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   - TankSpeed: 5
     ShootSpeed: 16
     ShootPeriod: 0.4
-    Bullet: {fileID: 0}
-    UseStandartBullet: 1
-    Color: {r: 0.4528302, g: 0.33122107, b: 0.21957992, a: 1}
+    BulletType: 0
+    Sprite: {fileID: 3128560965674761007, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   - TankSpeed: 5
     ShootSpeed: 18
     ShootPeriod: 0.2
-    Bullet: {fileID: 0}
-    UseStandartBullet: 1
-    Color: {r: 0.745283, g: 0.6456095, b: 0.18561764, a: 1}
+    BulletType: 0
+    Sprite: {fileID: 4604434291123656347, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   - TankSpeed: 5
     ShootSpeed: 18
     ShootPeriod: 0.2
-    Bullet: {fileID: 0}
-    UseStandartBullet: 1
-    Color: {r: 0.394737, g: 1, b: 0, a: 1}
+    BulletType: 1
+    Sprite: {fileID: -1742091599586700761, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   _tankMove: {fileID: 5092234107609257822}
   _tankGun: {fileID: 9060470252874802000}
   _tankRenderer: {fileID: 4731981514360919861}
@@ -179,6 +177,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1105736326974093566}
     m_Modifications:
+    - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5800861129757255216, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
+    - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3514206668469673736, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -239,6 +249,58 @@ PrefabInstance:
       propertyPath: _objToDestroy
       value: 
       objectReference: {fileID: 1164818377217573772}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5226837991808109828}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4084125118073144519}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayerDie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetLeavle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerRespawn, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TankUpdates, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485893993757968951, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: DieEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7485868967115789518, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_Name
       value: Tank

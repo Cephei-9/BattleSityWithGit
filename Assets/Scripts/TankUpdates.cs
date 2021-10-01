@@ -14,6 +14,7 @@ public class TankUpdates : MonoBehaviour
     public void UpdateLeavle()
     {
         Leavle++;
+        Leavle = Mathf.Min(Leavle, leavleCharacteristic.Length - 1);
         ChangeCharacteristic();
     }
 
@@ -27,8 +28,8 @@ public class TankUpdates : MonoBehaviour
     {
         LeavleCharacteristic nextLeavle = leavleCharacteristic[Leavle];
         _tankMove.Speed = nextLeavle.TankSpeed;
-        _tankGun.UpdateCharacteristic(nextLeavle.ShootSpeed, nextLeavle.ShootPeriod);
-        _tankRenderer.color = nextLeavle.Color;
+        _tankGun.UpdateCharacteristic(nextLeavle.ShootSpeed, nextLeavle.ShootPeriod, nextLeavle.BulletType);
+        _tankRenderer.sprite = nextLeavle.Sprite;
     }
 
     [System.Serializable]
@@ -37,8 +38,7 @@ public class TankUpdates : MonoBehaviour
         public float TankSpeed = 1;
         public float ShootSpeed = 1;
         public float ShootPeriod = 1;
-        public Bullet Bullet;
-        public bool UseStandartBullet = true;
-        public Color Color;
+        public BulletType BulletType;
+        public Sprite Sprite;
     }
 }

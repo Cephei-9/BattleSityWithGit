@@ -77,7 +77,7 @@ MonoBehaviour:
   _minTime: 2
   _maxTime: 5
   _timeToTurnAfterCollision: 0.7
-  _shootPeriod: 2
+  _shootPeriod: 0.6
   _tankMove: {fileID: 2710874086073873162}
   _tankGun: {fileID: 2200162205491234564}
   _playerBasePosition: {x: 0, y: -12}
@@ -97,7 +97,7 @@ MonoBehaviour:
   _minTime: 2
   _maxTime: 7
   _timeToTurnAfterCollision: 0.5
-  _shootPeriod: 2
+  _shootPeriod: 0.6
   _tankMove: {fileID: 2710874086073873162}
   _tankGun: {fileID: 2200162205491234564}
 --- !u!114 &1482559003
@@ -116,7 +116,7 @@ MonoBehaviour:
   _minTime: 2
   _maxTime: 6
   _timeToTurnAfterCollision: 0.5
-  _shootPeriod: 2
+  _shootPeriod: 0.6
   _tankMove: {fileID: 2710874086073873162}
   _tankGun: {fileID: 2200162205491234564}
   enemyAI: {fileID: 2710874084848675488}
@@ -195,7 +195,7 @@ Transform:
   m_Children:
   - {fileID: 2321548498691695838}
   m_Father: {fileID: 1538557370834747511}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6517272661947893465
 MonoBehaviour:
@@ -220,17 +220,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2710874084848675489}
     m_Modifications:
+    - target: {fileID: 761605237, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2072038468702977127, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
     - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_Color.b
-      value: 0.49056602
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_Color.g
-      value: 0.49056602
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_Color.r
-      value: 0.49056602
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3514206668469673736, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_RootOrder
@@ -278,11 +286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: _speed
-      value: 12
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: _shootPeriod
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: _selfFraction

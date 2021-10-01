@@ -16,7 +16,6 @@ public class AttackBase : AIMode
 
     protected override void SetDirectionToTank()
     {
-        print("AttackBase");
         Vector2 toBase = _playerBasePosition - (Vector2)_tankMove.transform.position;
 
         Vector2 directionToBase = TrueDot.NormalizeAngleForVector(toBase);

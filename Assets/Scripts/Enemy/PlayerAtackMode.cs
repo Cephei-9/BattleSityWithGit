@@ -34,7 +34,6 @@ public class PlayerAtackMode : AIMode
         while (_tankMove.SetDirection(directionToBase) == false)
         {
             directionToBase = TrueDot.GetRandomNormolizeDirection();
-            print("PlayerAttack");
             i++;
             if (i > 10) break;
         }

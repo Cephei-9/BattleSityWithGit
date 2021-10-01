@@ -56,10 +56,10 @@ public class TankMove : MonoBehaviour
         Vector2 newPosition = new Vector2(positionOnAxis, transform.position.y);
         if (NowDirection.x == 0) newPosition = new Vector2(transform.position.x, positionOnAxis);
 
-        print("DistanseAfterTurn: " + System.Math.Round(distanceCheck.CheckDistance(transform.position, newDirection), 4));
+        //print("DistanseAfterTurn: " + System.Math.Round(distanceCheck.CheckDistance(transform.position, newDirection), 4));
         if (System.Math.Round(distanceCheck.CheckDistance(transform.position, newDirection), 4) < 1) 
         {
-            print("Name tank: " + transform.parent.name);
+            //print("Name tank: " + transform.parent.name);
             //Debug.Break();
             return false;
         }

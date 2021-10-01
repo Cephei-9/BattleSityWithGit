@@ -5,6 +5,8 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     //Dot работает через жопу надо написать свой правельный дот
+    [SerializeField] private bool _isBeton = false;
+    [Space]
     [SerializeField] private Transform _spritesTransform;
     [SerializeField] private GameObject _gameObjToDie;
 
@@ -17,6 +19,7 @@ public class Wall : MonoBehaviour
 
     public void TakeBullet(BulletCollisionInfo bulletInfo)
     {
+        if (_isBeton && bulletInfo.BulletType != BulletType.BetonCrusher) return;
         if (_isInjury) { Destroy(_gameObjToDie); return; }
 
         Vector2 toBullet = bulletInfo.lastPosition - (Vector2)transform.position;

@@ -11,6 +11,7 @@ public class TankGun : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Collider2D _selfCollider;
     [SerializeField] private Fraction _selfFraction;
+    [SerializeField] private BulletType _bulletType;
 
     private bool canShoot = true; 
 
@@ -18,22 +19,17 @@ public class TankGun : MonoBehaviour
     {
         if (canShoot == false) return;
         Bullet newBullet = Instantiate(_bullet, _shootPoint.position, _shootPoint.rotation);
-        newBullet.StartMove(_shootPoint.up, _speed, _selfFraction);
+        newBullet.StartMove(_shootPoint.up, _speed, _selfFraction, _bulletType);
 
         Physics2D.IgnoreCollision(_selfCollider, newBullet.SelfCollider);
         canShoot = false;
         StartCoroutine(StaticCoroutine.Wait(_shootPeriod, () => { canShoot = true; }));
     }
 
-    public void UpdateCharacteristic(float speed, float shootPeriod)
+    public void UpdateCharacteristic(float speed, float shootPeriod, BulletType bulletType)
     {
         _speed = speed;
-        _shootPeriod = shootPeriod; 
-    }
-
-    public void UpdateCharacteristic(float speed, float shootPeriod, Bullet bullet)
-    {
-        UpdateCharacteristic(speed, shootPeriod);
-        _bullet = bullet;
+        _shootPeriod = shootPeriod;
+        _bulletType = bulletType;
     }
 }

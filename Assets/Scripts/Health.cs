@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
 
     public int _health { get; private set; }
     public UnityEvent<EnemyAI> DieEvent;
+    public UnityEvent TakeDamageEvent;
 
     private void Start()
     {
@@ -34,7 +35,8 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
-        if (_health == 0) Die();
+        TakeDamageEvent.Invoke();
+        if (_health <= 0) Die();
     }
 
     private void Die()
