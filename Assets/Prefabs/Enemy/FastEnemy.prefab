@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2843619958132248341}
   - component: {fileID: 2843619958132248342}
   - component: {fileID: 2843619958132248343}
+  - component: {fileID: 1848060356449528623}
   m_Layer: 0
   m_Name: FastEnemy
   m_TagString: Untagged
@@ -120,6 +121,19 @@ MonoBehaviour:
   _tankMove: {fileID: 209528257854288390}
   _tankGun: {fileID: 4178806740130366984}
   enemyAI: {fileID: 209528259313314732}
+--- !u!114 &1848060356449528623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209528259313314734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 119da4d7af93b2740b4b749a507a64d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 150
 --- !u!1 &1659984543013733654
 GameObject:
   m_ObjectHideFlags: 0

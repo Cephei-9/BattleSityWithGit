@@ -16,6 +16,8 @@ public class WallDestroyer : GameFieldChanger
         }
     }
 
+    public override void OnPointerExitGameField() => _canDestroy = false;
+
     public override void OnPositionChange(Vector2Int newPosition)
     {
         _nowPointerPosition = newPosition;

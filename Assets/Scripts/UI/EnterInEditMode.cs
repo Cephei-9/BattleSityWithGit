@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnterInEditMode : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EnterInEditMode : MonoBehaviour
     [Space]
     [SerializeField] private GameObject _ToEditButton;
     [SerializeField] private GameObject _respawnButton;
+    [Space]
+    [SerializeField] private RespawnTimeAnimation animation;
 
     public bool PlayerOnField = true;
     public bool CanRespawn = true;
@@ -29,7 +32,6 @@ public class EnterInEditMode : MonoBehaviour
 
     public void ToEdit()
     {
-        print("ToEdit");
         SetActiveButton(false, true);
         _selfRespawn.HidePlayer();
 
@@ -39,7 +41,6 @@ public class EnterInEditMode : MonoBehaviour
 
     public void Respawn()
     {
-        print("Respawn");
         _selfRespawn.Spawn();
         SetActiveButton(true, false);
         PlayerOnField = true;
@@ -49,11 +50,11 @@ public class EnterInEditMode : MonoBehaviour
 
     public void OnPlayerDie()
     {
-        print("OnPlayerDie");
         _selfRespawn.HidePlayer();
         TimerToRespawn = 0;
         SetActiveButton(false, false);
         PlayerOnField = false;
+        animation.PlayAnimation(_timeToRespawn);
 
         if (_otherEditMode.PlayerOnField || _otherEditMode.TimerToRespawn > _timeToRespawn) return;
 
@@ -65,12 +66,14 @@ public class EnterInEditMode : MonoBehaviour
     {
         CanRespawn = true;
         _respawnButton.SetActive(true);
+        animation.StopAnimation();
     }
 
     public void CancelOportunityRespawn()
     {
         CanRespawn = false;
         _respawnButton.SetActive(false);
+        animation.PlayAnimation(_timeToRespawn - TimerToRespawn);
     }
 
     private void SetActiveButton(bool toEditActive, bool respawnActive)

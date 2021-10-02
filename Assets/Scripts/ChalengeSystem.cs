@@ -12,14 +12,31 @@ public class ChalengeSystem : MonoBehaviour
 
     public int MaxEnemyCount { get => Mathf.RoundToInt(_activeParametrs.MaxEnemyCount.Evaluate(TimeOnStart)); }
     public float NextSpawnPeriod { get => _activeParametrs.SpawnPeriod.Evaluate(TimeOnStart); }
-    public float TimeOnStart { get => (Time.time - _timeOnStart) * _timeScale; }
+    public float TimeOnStart { get => (Time.time - _timeOutTheGame) * _timeScale; }
 
-    private float _timeOnStart;
+    public float _timeOutTheGame;
+    public float _timeOnStartPause;
+    public float TimeOnStartGame;
     public ChalengeParametrs _activeParametrs;
+
+    private void Update()
+    {
+        TimeOnStartGame = TimeOnStart;
+    }
 
     public void ChackStartGameTime()
     {
-        _timeOnStart = Time.time;
+        _timeOutTheGame = Time.time;
+    }
+
+    public void OnPauseStart()
+    {
+        _timeOnStartPause = Time.time;
+    }
+
+    public void OnEndPause()
+    {
+        _timeOutTheGame += Time.time - _timeOnStartPause;
     }
 
     public EnemyAI GetNextEnemy()

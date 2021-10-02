@@ -50,7 +50,9 @@ public class TimeCrio2v : MonoBehaviour
             if (tank == null) continue;
             SetActiveTankComponent(true, tank);
         }
-        if(_destroyAfterDie) Destroy(gameObject);
+        SpawnSystem spawnSystem = FindObjectOfType<SpawnSystem>();
+        spawnSystem.OnNewEnemyEvent.RemoveListener(OnAddEnemy);
+        if (_destroyAfterDie) Destroy(gameObject);
     }
 
     private IEnumerator WaitNextFrame(System.Action action)

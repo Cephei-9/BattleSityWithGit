@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ScoreAndMoney : MonoBehaviour
@@ -15,6 +16,8 @@ public class ScoreAndMoney : MonoBehaviour
     public int Money { get; private set; }
 
     public static ScoreAndMoney SingleTone;
+
+    public UnityEvent<int, int> UpdateInfoEvent;
 
     private void Start()
     {
@@ -44,8 +47,9 @@ public class ScoreAndMoney : MonoBehaviour
 
     public void OnEnemyDie(EnemyAI enemyAI)
     {
-        Score += 100;
-        Money += 100;
+        int enemyPrice = enemyAI.GetComponent<EnemyPrice>().GetPrice;
+        Score += enemyPrice;
+        Money += enemyPrice;
         UpdateInfo();
     }
 
@@ -53,5 +57,6 @@ public class ScoreAndMoney : MonoBehaviour
     {
         _scoreText.text = Score.ToString();
         _moneyText.text = Money.ToString();
+        UpdateInfoEvent.Invoke(Score, Money);
     }
 }

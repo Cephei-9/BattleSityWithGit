@@ -44,6 +44,8 @@ public class Mouse : MonoBehaviour
             {
                 OnExitGameField.Invoke();
                 PointerIsInsideField = false;
+                _lastPosition = Vector2Int.zero;
+                _activeInstrument.OnPointerExitGameField();
             }
             return;
         }

@@ -12,4 +12,6 @@ public abstract class GameFieldChanger : MonoBehaviour
     [SerializeField] protected Kursor _kursor;
 
     public abstract void OnPositionChange(Vector2Int newPosition);
+
+    public abstract void OnPointerExitGameField();
 }

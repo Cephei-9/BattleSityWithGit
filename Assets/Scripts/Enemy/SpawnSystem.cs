@@ -14,7 +14,7 @@ public class SpawnSystem : MonoBehaviour
 
     public UnityEvent<EnemyAI> OnNewEnemyEvent;
 
-    public bool CanSpawn { get => _maxEnemyCount > Enemies.Count; }
+    public bool CanSpawn = true;
     public List<EnemyAI> Enemies { get; private set; } = new List<EnemyAI>();
 
     private Coroutine _spawnEnemy;
@@ -22,7 +22,16 @@ public class SpawnSystem : MonoBehaviour
 
     public void StartGame()
     {
+        CanSpawn = true;
         StartSpawnEnemyCoroutine();
+    }
+
+    public void Stop()
+    {
+        if (_spawnEnemy != null) StopCoroutine(_spawnEnemy);
+        _spawnEnemy = null;
+        CanSpawn = false;
+        CleanEnemiesArrByNull();
     }
 
     public void OnTankDeath(EnemyAI enemy)
@@ -51,6 +60,7 @@ public class SpawnSystem : MonoBehaviour
 
     private void StartSpawnEnemyCoroutine()
     {
+        if (CanSpawn == false) return;
         if (_chalengeSystem.MaxEnemyCount > Enemies.Count && _spawnEnemy == null) 
             _spawnEnemy = StartCoroutine(SpawnEnemy());
     }

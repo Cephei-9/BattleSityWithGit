@@ -21,6 +21,8 @@ public class BlockCreator : GameFieldChanger
         }
     }
 
+    public override void OnPointerExitGameField() => _canBild = false;
+
     public override void OnPositionChange(Vector2Int newPosition)
     {
         _nowPointerPosition = newPosition;
