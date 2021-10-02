@@ -11,6 +11,7 @@ public class SpawnSystem : MonoBehaviour
 
     [SerializeField] Transform[] _spawnPoint;
     [SerializeField] EnemyAI _enemy;
+    [SerializeField] SpawnAnimation animation;
 
     public UnityEvent<EnemyAI> OnNewEnemyEvent;
 
@@ -60,9 +61,19 @@ public class SpawnSystem : MonoBehaviour
 
     private void StartSpawnEnemyCoroutine()
     {
-        if (CanSpawn == false) return;
-        if (_chalengeSystem.MaxEnemyCount > Enemies.Count && _spawnEnemy == null) 
+        if (CanSpawn == false) 
+        {
+            animation.StopAnimation();
+            return;
+        }
+        if (_chalengeSystem.MaxEnemyCount > Enemies.Count && _spawnEnemy == null)
+        {
             _spawnEnemy = StartCoroutine(SpawnEnemy());
+            animation.PlayAnimation();
+            animation.ChangePosition(_spawnPoint[_nextSpawn].position);
+        }
+
+        if (_spawnEnemy == null) animation.StopAnimation();
     }
 
     public void CleanEnemiesArrByNull()

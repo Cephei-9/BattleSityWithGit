@@ -57,11 +57,6 @@ MonoBehaviour:
   - 20
   - 20
   _startModes: {fileID: 1482559002}
-  Colors:
-  - {r: 0.2932075, g: 0.5471698, b: 0.2240299, a: 1}
-  - {r: 0.27326453, g: 0.7169812, b: 0.7044487, a: 1}
-  - {r: 0.69739443, g: 0.20679955, b: 0.6981132, a: 1}
-  SpriteRenderer: {fileID: 2494618654593889121}
 --- !u!114 &1482559001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2710874084848675489}
     m_Modifications:
+    - target: {fileID: 761605237, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
+      propertyPath: Speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 504508631848987678, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -300,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: _shootPeriod
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4257729311283353723, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: _selfFraction

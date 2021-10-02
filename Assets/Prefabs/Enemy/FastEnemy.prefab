@@ -57,11 +57,6 @@ MonoBehaviour:
   - 20
   - 20
   _startModes: {fileID: 2843619958132248342}
-  Colors:
-  - {r: 0.2932075, g: 0.5471698, b: 0.2240299, a: 1}
-  - {r: 0.27326453, g: 0.7169812, b: 0.7044487, a: 1}
-  - {r: 0.69739443, g: 0.20679955, b: 0.6981132, a: 1}
-  SpriteRenderer: {fileID: 425655287057265261}
 --- !u!114 &2843619958132248341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 761605237, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: Speed
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 761605237, guid: 38c5e3d52223a6047a47f73350a233b7, type: 3}
       propertyPath: _speed

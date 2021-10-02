@@ -10,7 +10,7 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) ActivePause();
+        if (Input.GetKeyDown(KeyCode.Escape) && _mainMenu.activeSelf == false) ActivePause();
     }
 
     public void ActivePause()

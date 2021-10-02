@@ -8,9 +8,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float[] _chanceOfReciving;
     [SerializeField] private AIMode _startModes;
 
-    public Color[] Colors;
-    public SpriteRenderer SpriteRenderer;
-
     private AIMode _activeMode;
 
     private void Start()
@@ -42,11 +39,6 @@ public class EnemyAI : MonoBehaviour
         newMode.Activate();
         _activeMode = newMode;
         StartCoroutine(StaticCoroutine.Wait(_activeMode.TimeWork, ChangeMode));
-
-        for (int i = 0; i < _aIModes.Length; i++)
-        {
-            if (_aIModes[i] == _activeMode) SpriteRenderer.color = Colors[i];
-        }
     }
 
     public void ChangeOutOfTurn()

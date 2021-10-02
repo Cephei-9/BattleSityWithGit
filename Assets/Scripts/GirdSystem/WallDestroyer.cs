@@ -22,6 +22,7 @@ public class WallDestroyer : GameFieldChanger
     {
         _nowPointerPosition = newPosition;
 
+        _kursor.ActiveFalseSprite(true);
         _kursor.ChangeOnThisSprite(_falseSprite);
         if (_gird.CheckIsFreeUnit(newPosition)) { _canDestroy = false; return; }
 

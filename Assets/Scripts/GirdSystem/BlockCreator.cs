@@ -28,12 +28,13 @@ public class BlockCreator : GameFieldChanger
         _nowPointerPosition = newPosition;
 
         if (_gird.CheckIsFreeUnit(newPosition) == false || ForbiddenCell.SingleTone.CheckOnForbidden(newPosition))
-        { 
-            _kursor.ChangeOnThisSprite(_falseSprite);
+        {
+            _kursor.ActiveFalseSprite(true);
             _canBild = false; 
             return; 
         }
 
+        _kursor.ActiveFalseSprite(false);
         _kursor.ChangeOnThisSprite(_luckySprite);
         _canBild = true;
     }

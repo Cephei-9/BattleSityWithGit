@@ -15,6 +15,9 @@ public class Health : MonoBehaviour
     public UnityEvent<EnemyAI> DieEvent;
     public UnityEvent TakeDamageEvent;
 
+    public bool IsImmortality = false;
+    private Coroutine _immortality;
+
     private void Start()
     {
         _health = _startHealth;
@@ -28,8 +31,15 @@ public class Health : MonoBehaviour
 
     public void TakeImmortality(float time)
     {
+        if (_immortality != null) StopCoroutine(_immortality);
         _health = Mathf.FloorToInt(Mathf.Infinity);
-        StartCoroutine(StaticCoroutine.Wait(time, () => { _health = _startHealth; }));
+
+        GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0.6f, 0.6f);
+        System.Action action = () => {
+            _health = _startHealth;
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        };
+        _immortality = StartCoroutine(StaticCoroutine.Wait(time, action));
     }
 
     public void TakeDamage(int damage)
