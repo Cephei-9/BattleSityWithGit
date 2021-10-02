@@ -103,6 +103,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31298c488dbfec4895c515e7eed40cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &7320756375346796490
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2398195222049075173}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7713733996164580679
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,22 +169,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leavleCharacteristic:
   - TankSpeed: 5
-    ShootSpeed: 12
+    ShootSpeed: 16
     ShootPeriod: 0.4
     BulletType: 0
     Sprite: {fileID: -5800861129757255216, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   - TankSpeed: 5
-    ShootSpeed: 16
+    ShootSpeed: 20
     ShootPeriod: 0.4
     BulletType: 0
     Sprite: {fileID: 3128560965674761007, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   - TankSpeed: 5
-    ShootSpeed: 18
+    ShootSpeed: 20
     ShootPeriod: 0.2
     BulletType: 0
     Sprite: {fileID: 4604434291123656347, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}
   - TankSpeed: 5
-    ShootSpeed: 18
+    ShootSpeed: 20
     ShootPeriod: 0.2
     BulletType: 1
     Sprite: {fileID: -1742091599586700761, guid: 76af5769fdbc6284e919fa17614fe2e9, type: 3}

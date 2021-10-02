@@ -29,6 +29,6 @@ public class WallDestroyer : GameFieldChanger
 
     private void DestroyBlock(Vector2Int position)
     {
-        Destroy(_gird.GetUnit(position).gameObject);
+        if (_gird.GetUnit(position) != null) Destroy(_gird.GetUnit(position).gameObject);
     }
 }

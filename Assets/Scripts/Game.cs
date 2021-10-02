@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     public UnityEvent StartGameEvent;
 
-    private void Start()
+    public void StartGame()
     {
         StartGameEvent.Invoke();
     }

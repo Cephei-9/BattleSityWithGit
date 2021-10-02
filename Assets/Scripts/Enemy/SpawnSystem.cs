@@ -20,7 +20,7 @@ public class SpawnSystem : MonoBehaviour
     private Coroutine _spawnEnemy;
     private int _nextSpawn;
 
-    private void Start()
+    public void StartGame()
     {
         StartSpawnEnemyCoroutine();
     }
@@ -33,18 +33,13 @@ public class SpawnSystem : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        print("NextPeriod: " + _chalengeSystem.NextSpawnPeriod + " Time: " + Time.time);
         yield return new WaitForSeconds(_chalengeSystem.NextSpawnPeriod);
 
         Vector3 position = _spawnPoint[_nextSpawn].position;
         _nextSpawn++;
         if (_nextSpawn == _spawnPoint.Length) _nextSpawn = 0;
 
-        //GetEnemy
-
         EnemyAI enemy = Instantiate(_chalengeSystem.GetNextEnemy(), position, Quaternion.identity);
-
-        print("EnemyName: " + enemy.gameObject.name + " Time: " + Time.time);
 
         Enemies.Add(enemy);
         OnNewEnemyEvent.Invoke(enemy);
@@ -56,7 +51,6 @@ public class SpawnSystem : MonoBehaviour
 
     private void StartSpawnEnemyCoroutine()
     {
-        print("MaxCount: " + _chalengeSystem.MaxEnemyCount + " Time: " + Time.time);
         if (_chalengeSystem.MaxEnemyCount > Enemies.Count && _spawnEnemy == null) 
             _spawnEnemy = StartCoroutine(SpawnEnemy());
     }

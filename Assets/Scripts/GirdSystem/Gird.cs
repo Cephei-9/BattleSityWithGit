@@ -31,8 +31,7 @@ public class Gird : MonoBehaviour
 
     public bool CheckIsFreeUnit(Vector2Int position)
     {
-        if (GirdUnit[position] || CheckTankOnUnit(position)) { print("Check unit = not free"); return false; }
-        //print("Check unit = free");
+        if (GirdUnit[position] || CheckTankOnUnit(position)) return false;
         return true;
     }
 

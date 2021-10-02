@@ -32,7 +32,6 @@ public class ButtonScaleAnimation : MonoBehaviour
     {
         for (float t = 0; t < 1; t += Time.deltaTime / _time)
         {
-            print("T: " + t + " T*Pi " + t * Mathf.PI);
             button.localScale = Vector3.one * Mathf.Lerp(_minScale, _maxScale, Mathf.Sin(t * Mathf.PI));
             yield return null;
         }

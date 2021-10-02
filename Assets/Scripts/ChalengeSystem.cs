@@ -7,14 +7,20 @@ public class ChalengeSystem : MonoBehaviour
     [SerializeField] private float _timeScale = 1;
     [SerializeField] private ChalengeParametrs _forOnePlayer;
     [SerializeField] private ChalengeParametrs _forTwoPlayer;
-
     [Space]
     [SerializeField] private EnemyChance[] _enemysChance;
 
-    public int MaxEnemyCount { get => Mathf.RoundToInt(_activeParametrs.MaxEnemyCount.Evaluate(Time.time * _timeScale)); }
-    public float NextSpawnPeriod { get => _activeParametrs.SpawnPeriod.Evaluate(Time.time * _timeScale); }
+    public int MaxEnemyCount { get => Mathf.RoundToInt(_activeParametrs.MaxEnemyCount.Evaluate(TimeOnStart)); }
+    public float NextSpawnPeriod { get => _activeParametrs.SpawnPeriod.Evaluate(TimeOnStart); }
+    public float TimeOnStart { get => (Time.time - _timeOnStart) * _timeScale; }
 
-    private ChalengeParametrs _activeParametrs;
+    private float _timeOnStart;
+    public ChalengeParametrs _activeParametrs;
+
+    public void ChackStartGameTime()
+    {
+        _timeOnStart = Time.time;
+    }
 
     public EnemyAI GetNextEnemy()
     {
@@ -40,6 +46,7 @@ public class ChalengeSystem : MonoBehaviour
             return;
         }
         _activeParametrs = _forTwoPlayer;
+        print("Max enemy count: " + _activeParametrs.MaxEnemyCount.Evaluate(0));
     }
 }
 

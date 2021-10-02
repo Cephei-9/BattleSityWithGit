@@ -32,11 +32,9 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    public void OnPlayerDie()
+    public void HidePlayer()
     {
         PlayerOnField = false;
         _health.transform.position = new Vector2(-100, -100);
-        StartCoroutine(StaticCoroutine.Wait(_waitTime, 
-            ()=> { Spawn(); _health.gameObject.SetActive(true); }));
     }
 }

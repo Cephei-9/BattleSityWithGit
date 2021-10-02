@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreAndMoney : MonoBehaviour
 {
+    [SerializeField] private int _startMoney = 2000;
+    [Space]
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _moneyText;
     [SerializeField] private ButtonScaleAnimation _animation;
@@ -18,6 +20,8 @@ public class ScoreAndMoney : MonoBehaviour
     {
         if (SingleTone != null) Debug.LogError("SingleTone Exeption");
         SingleTone = this;
+        Money = _startMoney;
+        UpdateInfo();
     }
 
     public bool TryToBye(int money)

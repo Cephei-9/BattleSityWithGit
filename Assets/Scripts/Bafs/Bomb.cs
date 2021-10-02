@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
 
     public void Boom()
     {
+        print("Active bomb");
         SpawnSystem spawnSystem = FindObjectOfType<SpawnSystem>();
         EnemyAI[] enemies = spawnSystem.Enemies.ToArray();
         foreach (var item in enemies)
@@ -22,5 +23,6 @@ public class Bomb : MonoBehaviour
         //yield return null;
         yield return new WaitForEndOfFrame();
         spawnSystem.CleanEnemiesArrByNull();
+        spawnSystem.OnTankDeath(new EnemyAI());
     }
 }

@@ -27,7 +27,6 @@ public class ForbiddenCell : MonoBehaviour
         {
             if (position == item) return true;
         }
-        print("Forbidden false");
         return false;
     }
 

@@ -13,8 +13,11 @@ public class ConcretPlayer : MonoBehaviour
 
     public void ActiveImmortality()
     {
-        if(CheckTankOnField(_selfTank)) _immortality.GiveImmortality(_selfTank);
-
+        if (CheckTankOnField(_selfTank))
+        {
+            _immortality.GiveImmortality(_selfTank);
+            return;
+        }
         if (IsOnePlayer) return;
 
         if (CheckTankOnField(_otherTank)) _immortality.GiveImmortality(_otherTank);
@@ -22,8 +25,11 @@ public class ConcretPlayer : MonoBehaviour
 
     public void UpdateTank()
     {
-        if (CheckTankOnField(_selfTank)) _selfTank.GetComponentInChildren<TankUpdates>().UpdateLeavle();
-
+        if (CheckTankOnField(_selfTank)) 
+        {
+            _selfTank.GetComponentInChildren<TankUpdates>().UpdateLeavle();
+            return;
+        }
         if (IsOnePlayer) return;
 
         if (CheckTankOnField(_otherTank)) _otherTank.GetComponentInChildren<TankUpdates>().UpdateLeavle();
